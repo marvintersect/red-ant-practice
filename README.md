@@ -11,8 +11,6 @@ Please feel free to use whatever means you need to complete the tasks. If you ge
 
 In preparation for your test, please check out this repo and have the app running.
 
-This app uses , please feel free to familiarise youself with the library
-
 ## Libraries in use
 This project uses a few key libaries, please feel free to familiarise youself before the test:
 - [Redux](https://redux.js.org/)
