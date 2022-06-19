@@ -14,7 +14,7 @@ function ProductList (products = []) {
 
   const comics = useSelector(comicsSelectors.getComics)
   const pageNumber = useSelector(comicsSelectors.getPageNumber)
-  
+
   useEffect(() => {
     dispatch(actions.fetchComics())
   }, [dispatch])
@@ -25,6 +25,8 @@ function ProductList (products = []) {
 
   function handlePageChange (event, value) {
     // TODO: add page change handler
+    dispatch(actions.fetchComics(value))
+
   }
 
   return <>
@@ -35,16 +37,16 @@ function ProductList (products = []) {
       <Grid container spacing={2}>
         {
           comics.map((comic) => (
-            <Grid key={comic.id} item xs={4}>
-              <Comic
-                onClickFavourite={() => handleClickFavourite(comic)}
-                title={comic.title}
-                image={comic.thumbnail}
-              />
-            </Grid>
+              <Grid key={comic.id} item xs={4}>
+                <Comic
+                    onClickFavourite={() => handleClickFavourite(comic)}
+                    title={comic.title}
+                    image={comic.thumbnail}
+                />
+              </Grid>
           ))
         }
-     </Grid>
+      </Grid>
     </Box>
     <Box sx={{ padding: 2 }}>
       <Pagination count={10} page={pageNumber} onChange={handlePageChange} />

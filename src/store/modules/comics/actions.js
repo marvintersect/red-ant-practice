@@ -7,16 +7,20 @@ class ComicsActions {
       dispatch({
         type: constants.FETCH_COMICS_PENDING
       })
+      console.log(page)
 
-      return comicsService.fetchComics()
-        .then(data => dispatch({
-          type: constants.FETCH_COMICS_SUCCESS,
-          payload: data
-        }))
-        .catch(error => dispatch({
-          type: constants.FETCH_COMICS_FAIL,
-          payload: error
-        }))
+      const limit = 6;
+      const offset = limit * (page - 1);
+
+      return comicsService.fetchComics(limit, offset)
+          .then(data => dispatch({
+            type: constants.FETCH_COMICS_SUCCESS,
+            payload: data
+          }))
+          .catch(error => dispatch({
+            type: constants.FETCH_COMICS_FAIL,
+            payload: error
+          }))
     }
   }
 }
